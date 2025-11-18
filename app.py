@@ -7,8 +7,13 @@ import plotly.graph_objects as go
 from datetime import datetime
 st.set_page_config(layout="wide", page_title="Market Regime Dashboard")
 
-PROJECT_DIR = "drive/MyDrive/market_regime_project"  # Colab path when mounted
-MODELS_DIR = os.path.join("/", PROJECT_DIR, "models")
+# Correct Windows LOCAL project directory
+PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
+
+# Models and data stored inside folders
+MODELS_DIR = os.path.join(PROJECT_DIR, "models")
+DATA_DIR = os.path.join(PROJECT_DIR, "data")
+
 
 # Load models
 kmeans = joblib.load(os.path.join(MODELS_DIR, "kmeans.joblib"))
